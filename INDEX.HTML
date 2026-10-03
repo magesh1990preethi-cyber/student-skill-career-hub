@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Skill Development & Career Hub</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        /* Navigation */
+        nav {
+            background: #172554;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #93c5fd;
+        }
+
+        /* Home */
+        .home {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 10%;
+            background: linear-gradient(135deg, #dbeafe, #eef2ff);
+        }
+
+        .home-content h1 {
+            font-size: 48px;
+            color: #172554;
+            margin-bottom: 20px;
+        }
+
+        .home-content h2 {
+            font-size: 25px;
+            color: #2563eb;
+            margin-bottom: 20px;
+        }
+
+        .home-content p {
+            max-width: 750px;
+            margin: auto;
+            font-size: 18px;
+            color: #444;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            margin: 8px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #172554;
+        }
+
+        /* Common Sections */
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #172554;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .section-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #555;
+        }
+
+        /* About */
+        .about-box {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .about-box h3 {
+            color: #2563eb;
+            margin: 20px 0 8px;
+        }
+
+        /* Cards */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card h3 {
+            color: #2563eb;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        /* Skills */
+        .skills-section {
+            background: #eef2ff;
+        }
+
+        .skill-list {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .skill {
+            margin-bottom: 25px;
+        }
+
+        .skill-name {
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .progress {
+            height: 12px;
+            background: #dbeafe;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress span {
+            display: block;
+            height: 100%;
+            background: #2563eb;
+        }
+
+        .python {
+            width: 85%;
+        }
+
+        .cpp {
+            width: 80%;
+        }
+
+        .web {
+            width: 90%;
+        }
+
+        .database {
+            width: 75%;
+        }
+
+        .analytics {
+            width: 70%;
+        }
+
+        /* Career */
+        .career-section {
+            background: #f8fafc;
+        }
+
+        /* Resources */
+        .resource-list {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .resource-list li {
+            margin: 12px 0;
+            padding: 10px;
+            list-style-position: inside;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: #eef2ff;
+        }
+
+        form {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        form label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        form textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        form button {
+            margin-top: 20px;
+            padding: 13px 28px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        form button:hover {
+            background: #172554;
+        }
+
+        /* Footer */
+        footer {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer p {
+            margin: 7px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .home-content h1 {
+                font-size: 35px;
+            }
+
+            .home-content h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Career Hub</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#career">Career</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Home -->
+    <section class="home" id="home">
+        <div class="home-content">
+
+            <h1>Student Skill Development & Career Hub</h1>
+
+            <h2>Build Your Skills. Shape Your Career.</h2>
+
+            <p>
+                Welcome to Student Skill Development & Career Hub.
+                Our platform helps students improve their technical
+                skills, develop professional abilities, explore career
+                opportunities and prepare for a successful future.
+            </p>
+
+            <div class="buttons">
+                <a href="#skills" class="btn">Explore Skills</a>
+                <a href="#courses" class="btn">Explore Courses</a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- About -->
+    <section id="about">
+
+        <h2 class="section-title">About Us</h2>
+
+        <p class="section-text">
+            Learn more about our purpose and how we help students
+            become skilled and career-ready.
+        </p>
+
+        <div class="about-box">
+
+            <p>
+                Student Skill Development & Career Hub is a learning
+                platform designed to help students understand the
+                skills required for their academic and professional
+                growth.
+            </p>
+
+            <h3>Our Vision</h3>
+
+            <p>
+                To help students become skilled, confident and
+                career-ready professionals.
+            </p>
+
+            <h3>Our Mission</h3>
+
+            <p>
+                • Encourage continuous learning<br>
+                • Develop technical knowledge<br>
+                • Improve communication and teamwork<br>
+                • Provide career awareness<br>
+                • Support students in placement preparation
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Skills -->
+    <section id="skills" class="skills-section">
+
+        <h2 class="section-title">Technical Skills</h2>
+
+        <p class="section-text">
+            Develop important technical skills that can help you
+            in academics, projects and future careers.
+        </p>
+
+        <div class="skill-list">
+
+            <div class="skill">
+                <div class="skill-name">Python Programming</div>
+                <div class="progress">
+                    <span class="python"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">C++ Programming</div>
+                <div class="progress">
+                    <span class="cpp"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">Web Development</div>
+                <div class="progress">
+                    <span class="web"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">Database Management</div>
+                <div class="progress">
+                    <span class="database"></span>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">Data Analytics</div>
+                <div class="progress">
+                    <span class="analytics"></span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Courses -->
+    <section id="courses">
+
+        <h2 class="section-title">Popular Courses</h2>
+
+        <p class="section-text">
+            Explore useful courses and build a strong foundation
+            in computer applications.
+        </p>
+
+        <div class="card-container">
+
+            <div class="card">
+                <h3>Python Programming</h3>
+                <p>
+                    Learn variables, conditions, loops, functions
+                    and object-oriented programming.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>C++ Programming</h3>
+                <p>
+                    Understand programming fundamentals, classes,
+                    objects and inheritance.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>HTML & CSS</h3>
+                <p>
+                    Learn how to create and design attractive
+                    and responsive web pages.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Java</h3>
+                <p>
+                    Understand Java programming and
+                    object-oriented programming concepts.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>SQL</h3>
+                <p>
+                    Learn how to create, manage and retrieve
+                    information from databases.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Data Analytics</h3>
+                <p>
+                    Learn the basic process of collecting,
+                    cleaning, analysing and presenting data.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Career -->
+    <section id="career" class="career-section">
+
+        <h2 class="section-title">Explore Career Paths</h2>
+
+        <p class="section-text">
+            Explore different career opportunities available
+            after developing computer application skills.
+        </p>
+
+        <div class="card-container">
+
+            <div class="card">
+                <h3>Software Developer</h3>
+                <p>
+                    Design, develop and maintain software
+                    applications.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Web Developer</h3>
+                <p>
+                    Create and maintain websites and
+                    web applications.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Data Analyst</h3>
+                <p>
+                    Analyse data and present useful information
+                    through reports and visualisations.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Database Administrator</h3>
+                <p>
+                    Manage databases and maintain data
+                    availability and organisation.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Computer Applications Lecturer</h3>
+                <p>
+                    Build strong knowledge in computer
+                    applications and pursue higher education
+                    for teaching.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>IT Support Specialist</h3>
+                <p>
+                    Help organisations solve technical issues
+                    and maintain computer systems.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Resources -->
+    <section id="resources">
+
+        <h2 class="section-title">Learning Resources</h2>
+
+        <p class="section-text">
+            Use these resources to improve your knowledge,
+            practice skills and prepare for placements.
+        </p>
+
+        <div class="resource-list">
+
+            <h3>Study Resources</h3>
+
+            <ul>
+                <li>Programming Notes</li>
+                <li>Web Development Notes</li>
+                <li>Database Concepts</li>
+                <li>Data Analytics Basics</li>
+            </ul>
+
+            <h3>Practice Areas</h3>
+
+            <ul>
+                <li>Coding Practice</li>
+                <li>HTML & CSS Practice</li>
+                <li>SQL Queries</li>
+                <li>Problem-Solving Exercises</li>
+            </ul>
+
+            <h3>Placement Preparation</h3>
+
+            <ul>
+                <li>Resume Preparation</li>
+                <li>Self-Introduction Practice</li>
+                <li>Technical Interview Questions</li>
+                <li>Communication Skills</li>
+                <li>Group Discussion Preparation</li>
+                <li>Aptitude Practice</li>
+            </ul>
+
+            <h3>Project Ideas</h3>
+
+            <ul>
+                <li>Student Management System</li>
+                <li>Student Mark Analysis</li>
+                <li>Personal Portfolio</li>
+                <li>Event Management Website</li>
+                <li>Online Learning Portal</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section">
+
+        <h2 class="section-title">Contact Us</h2>
+
+        <p class="section-text">
+            Have a question or suggestion? Feel free to contact us.
+        </p>
+
+        <form>
+
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Enter your message"></textarea>
+
+            <button type="submit">Send Message</button>
+
+        </form>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>Student Skill Development & Career Hub</h3>
+
+        <p>Learn • Develop • Grow</p>
+
+        <p>
+            Home | About | Skills | Courses | Career |
+            Resources | Contact
+        </p>
+
+        <p>
+            © 2026 Student Skill Development & Career Hub.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
